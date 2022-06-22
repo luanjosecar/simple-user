@@ -1,0 +1,5 @@
+Para iniciar o servidor rode:
+ python -m uvicorn server:app --reload
+
+
+O servidor do mongo db está dentro do docker-compose
