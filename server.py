@@ -17,5 +17,10 @@ async def root():
 
 @app.post("/login/")
 async def user_login(body: Body):
-    resp = {"usuario": body.user}
+    resp = Users.verify_user(body.user, body.password)
     return resp
+
+
+@app.post("/cadastro/")
+async def register_user(body: Body):
+    resp = Users.create_user(body.user, body.password)
