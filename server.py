@@ -10,6 +10,7 @@ usr = Users()
 class Body(BaseModel):
     user: str
     password: str
+    new_passowrd :str = ""
 
 
 @app.get("/heath")
@@ -26,4 +27,9 @@ async def user_login(body: Body):
 @app.post("/cadastro/")
 async def register_user(body: Body):
     resp = usr.create_user(body.user, body.password)
+    return resp
+
+@app.post("/modify/")
+async def register_user(body: Body):
+    resp = usr.update_passowrd(body.user, body.password, body.new_passowrd)
     return resp

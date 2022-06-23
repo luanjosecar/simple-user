@@ -2,7 +2,7 @@ from pymongo import MongoClient, errors
 
 
 
-class Mongo_reader():
+class Mongo_User():
     DOMAIN = '127.0.0.1'
     PORT = 27017
     MONGOUSER = 'root'
@@ -40,7 +40,10 @@ class Mongo_reader():
         db = self.conect_mong()
         conector = db['users']
         usuario = conector.find_one({"_id" : username})
-        
-        print(username)
-        print(usuario)
         return usuario
+
+    def update_user(self,username:str, new_value:dict):
+        db = self.conect_mong()
+        base_value = {"_id":username}
+        query = {"$set" : new_value}
+        db.users.replace_one(base_value, new_value)
