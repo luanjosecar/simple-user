@@ -5,6 +5,7 @@ from pydantic import BaseModel
 app = FastAPI()
 
 
+usr = Users()
 
 class Body(BaseModel):
     user: str
@@ -17,10 +18,12 @@ async def root():
 
 @app.post("/login/")
 async def user_login(body: Body):
-    resp = Users.verify_user(body.user, body.password)
+
+    resp = usr.verify_user(body.user, body.password)
     return resp
 
 
 @app.post("/cadastro/")
 async def register_user(body: Body):
-    resp = Users.create_user(body.user, body.password)
+    resp = usr.create_user(body.user, body.password)
+    return resp

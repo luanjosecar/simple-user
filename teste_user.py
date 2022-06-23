@@ -15,10 +15,21 @@ def conect_mong():
     )
     return client['usuarios']
 
-def insert_user():  
+def insert_user(nome,senha):  
     base = conect_mong()
     base = base['users']
-    usuario = {"_id": "teste","username": "4123123", "password": "241234124124"}
+    usuario = {"_id": nome,"password": senha}
     base.insert_one(usuario)
 
-insert_user()
+
+def find_user(username:str):
+    db = conect_mong()
+    conector = db['users']
+    usuario = conector.find()
+    for usr in usuario:
+        print(usr)
+    print(username)
+    print(usuario)
+    return usuario
+
+find_user("21323")
