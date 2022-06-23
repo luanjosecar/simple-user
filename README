@@ -1,5 +1,24 @@
-Para iniciar o servidor rode:
- python -m uvicorn server:app --reload
+# Simple User Api
 
+Api de usuários simples para utilização em projetos de desenvolvimento
 
-O servidor do mongo db está dentro do docker-compose
+### Utilização
+
+Para iniciar a aplicação basta rodar os seguintes comandos :
+
+- Servidor :
+
+```
+python -m uvicorn server:app --reload
+```
+
+- Banco de dados MongoDb
+
+```
+systemctl start docker
+docker-compose up
+```
+
+A api foi feita com base na FastAPI em Pyhon, assim para acessar o swager da aplicação basta ir no seguinte link:
+
+http://127.0.0.1:8000/docs
